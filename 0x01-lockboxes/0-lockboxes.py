@@ -9,6 +9,9 @@ def canUnlockAll(boxes):
     Returns:
         bool: True if all boxes can be opened, otherwise, False
     """
+    if not boxes:  # If the list is empty, return False
+        return False
+
     opened = set()
 
     def search(box):
