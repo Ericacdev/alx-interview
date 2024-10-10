@@ -1,18 +1,24 @@
 #!/usr/bin/python3
-"""Lockboxes problem solution"""
+"""
+Solution to lockboxes problem
+"""
 
 
 def canUnlockAll(boxes):
-    """Determines if all the boxes can be opened"""
+    """
+    Determines whether a series of locked boxes can be opened
+    based on keys that can be attained.
+    Solution to the lockboxes problem
+    """
     if (type(boxes)) is not list:
         return False
     elif (len(boxes)) == 0:
         return False
 
-    for m in range(1, len(boxes) - 1):
+    for k in range(1, len(boxes) - 1):
         boxes_checked = False
         for idx in range(len(boxes)):
-            boxes_checked = m in boxes[idx] and m != idx
+            boxes_checked = k in boxes[idx] and k != idx
             if boxes_checked:
                 break
         if boxes_checked is False:
