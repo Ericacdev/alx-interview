@@ -1,22 +1,24 @@
 #!/usr/bin/python3
 """
-Determines if all the boxes can be opened
+Lockboxes problem solution
 """
-
 
 
 def canUnlockAll(boxes):
-"""
-set to keep track of opened boxes
-"""
-    opened_boxes = set()
-    opened_boxes.add(0)
-    keys = boxes[0]
+    """
+    Determines if all the boxes can be opened
+    """
+    if (type(boxes)) is not list:
+        return False
+    elif (len(boxes)) == 0:
+        return False
 
-    while keys:
-        key = keys.pop()
-        if key < len(boxes) and key not in opened_boxes:
-            opened_boxes.add(key)
-            keys.extend(boxes[key])
-
-    return len(opened_boxes) == len(boxes)
+    for m in range(1, len(boxes) - 1):
+        boxes_checked = False
+        for idx in range(len(boxes)):
+            boxes_checked = m in boxes[idx] and m != idx
+            if boxes_checked:
+                break
+        if boxes_checked is False:
+            return boxes_checked
+    return True
