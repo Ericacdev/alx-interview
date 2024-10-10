@@ -1,20 +1,25 @@
 #!/usr/bin/python3
-"""
-0-lockboxes module
-Determines if all boxes can be unlocked.
-"""
+""" Determines if all the boxes can be opened"""
+
 
 def canUnlockAll(boxes):
-    """Determines if all boxes can be opened."""
-    opened_boxes = set()
-    opened_boxes.add(0)
-    keys = boxes[0]
-    
-    while keys:
-        key = keys.pop()
-        if key < len(boxes) and key not in opened_boxes:
-            opened_boxes.add(key)
-            keys.extend(boxes[key])
-    
-    return len(opened_boxes) == len(boxes)
+    """Check if all the boxes can be opened
+    Args:
+        boxes (list): List of boxes
+    Returns:
+        bool: True if all boxes can be opened, otherwise, False
+    """
+    opened = set()
+
+    def search(box):
+        if box in opened:
+            return
+        opened.add(box)
+
+        for key in boxes[box]:
+            search(key)
+
+    search(0)
+
+    return len(opened) == len(boxes)
 
