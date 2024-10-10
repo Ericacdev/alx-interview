@@ -1,13 +1,9 @@
 #!/usr/bin/python3
-"""
-Lockboxes problem solution
-"""
+"""Lockboxes problem solution"""
 
 
 def canUnlockAll(boxes):
-    """
-    Determines if all the boxes can be opened
-    """
+    """Determines if all the boxes can be opened"""
     if (type(boxes)) is not list:
         return False
     elif (len(boxes)) == 0:
